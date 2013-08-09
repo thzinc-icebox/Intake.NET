@@ -21,7 +21,7 @@ namespace Intake.Web.View
 		{
 			var response = new DelegateHandlerResponse<IPagedEnumerable<Core.Model.Datum>>(data => {
 				context.Items.Add("Data", data);
-				context.Server.Transfer("~/Datum/Data.aspx");
+				context.Server.Transfer("~/View/Pages/Datum/Data.aspx");
 			});
 
 			var handler = new Core.Process.Handler.Data(response);
@@ -34,7 +34,7 @@ namespace Intake.Web.View
 		{
 			var response = new DelegateHandlerResponse<IPagedEnumerable<Core.Model.Datum>>(data => {
 				context.Items.Add("Data", data);
-				context.Server.Transfer("~/Datum/Data.aspx");
+				context.Server.Transfer("~/View/Pages/Datum/Data.aspx");
 			});
 
 			var tags = context.GetUrlParameter("tag").Split(new char[] { '+' }, StringSplitOptions.RemoveEmptyEntries);

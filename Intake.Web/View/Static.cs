@@ -11,13 +11,13 @@ namespace Intake.Web.View
 		[RequestMapping(new string[] {"GET"}, "/")]
 		public IHttpHandler Index(HttpContext context)
 		{
-			return new ServerTransferHandler("~/Default.aspx");
+			return new ServerTransferHandler("~/View/Pages/Default.aspx");
 		}
 
 		[RequestMapping(new string[] {"GET"}, "/about")]
 		public IHttpHandler About(HttpContext context)
 		{
-			return new ServerTransferHandler("~/About.aspx");
+			return new ServerTransferHandler("~/View/Pages/About.aspx");
 		}
 
 		#endregion

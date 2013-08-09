@@ -46,7 +46,7 @@
   </ProjectExtensions>
   <ItemGroup>
     <Folder Include="View\" />
-    <Folder Include="Datum\" />
+    <Folder Include="View\Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="View\Data.cs" />
@@ -70,10 +70,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Datum\Data.aspx" />
     <Content Include="Default.master" />
     <Content Include="web.config" />
-    <Content Include="Default.aspx" />
-    <Content Include="About.aspx" />
+    <Content Include="View\Pages\Datum\Data.aspx" />
+    <Content Include="View\Pages\About.aspx" />
+    <Content Include="View\Pages\Default.aspx" />
   </ItemGroup>
 </Project>
