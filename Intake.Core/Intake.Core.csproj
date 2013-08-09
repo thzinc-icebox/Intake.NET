@@ -30,9 +30,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\Tag.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Datum.cs" />
+    <Compile Include="Model\Location.cs" />
+    <Compile Include="Model\Factory\DatumFactory.cs" />
+    <Compile Include="Process\Data.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Model\Data\" />
+    <Folder Include="Model\Factory\" />
+    <Folder Include="Process\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MPRV.Portable\MPRV.Core\MPRV.Core.csproj">
+      <Project>{058A4FD8-63F6-4425-A02F-0CB9E6C3634D}</Project>
+      <Name>MPRV.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

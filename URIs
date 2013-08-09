@@ -1,0 +1,48 @@
+URIs
+
+Tag
+Data
+Data -> Tag
+User
+User -> Data
+User -> Data -> Tag
+User -> Location
+User -> Location -> Data
+User -> Location -> Data -> Tag
+
+Static content
+/
+/about
+ 
+Authentication:
+/login
+/logout
+
+Single datum:
+/data/:datumId
+
+Single user:
+/users/:handle
+
+Single location:
+/users/:handle/locations/:locationId
+
+New user:
+/users/new
+
+Lists of tags:
+/tags
+
+Lists of users:
+/users
+
+Lists of locations:
+/users/:handle/locations
+
+Lists of data:
+/data
+/data/tags/:tag
+/users/:handle/data
+/users/:handle/data/tags/:tag
+/users/:handle/locations/:locationId/data
+/users/:handle/locations/:locationId/data/tags/:tag
