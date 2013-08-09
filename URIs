@@ -24,20 +24,11 @@ Single datum:
 Single user:
 /users/:handle
 
-Single location:
-/users/:handle/locations/:locationId
-
 New user:
 /users/new
 
-Lists of tags:
-/tags
-
 Lists of users:
 /users
-
-Lists of locations:
-/users/:handle/locations
 
 Lists of data:
 /data
