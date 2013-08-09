@@ -39,7 +39,7 @@
     <Compile Include="Model\Datum.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Factory\DatumFactory.cs" />
-    <Compile Include="Process\Data.cs" />
+    <Compile Include="Process\Handler\Data.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -47,6 +47,7 @@
     <Folder Include="Model\Data\" />
     <Folder Include="Model\Factory\" />
     <Folder Include="Process\" />
+    <Folder Include="Process\Handler\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MPRV.Portable\MPRV.Core\MPRV.Core.csproj">
