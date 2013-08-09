@@ -56,7 +56,8 @@
     <Compile Include="Default.master.designer.cs">
       <DependentUpon>Default.master</DependentUpon>
     </Compile>
-    <Compile Include="View\User.cs" />
+    <Compile Include="View\Users.cs" />
+    <Compile Include="View\Static.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MPRV.Portable\MPRV.Core\MPRV.Core.csproj">
@@ -71,5 +72,8 @@
   <ItemGroup>
     <Content Include="Datum\Data.aspx" />
     <Content Include="Default.master" />
+    <Content Include="web.config" />
+    <Content Include="Default.aspx" />
+    <Content Include="About.aspx" />
   </ItemGroup>
 </Project>
