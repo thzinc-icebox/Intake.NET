@@ -27,9 +27,8 @@
 				</ul>
 			</dd>
 		</dl>
-		<div class="location">
+		<div class="location" data-latitude="<%: datum.Latitude %>" data-longitude="<%: datum.Longitude %>" data-accuracy="<%: datum.Accuracy %>">
 			<% if (datum.Latitude.HasValue && datum.Longitude.HasValue) { %>
-				<em>Map</em>
 				<div class="coordinates">
 					<span class="latitude"><%: datum.Latitude %></span>
 					<span class="longitude"><%: datum.Longitude %></span>
@@ -37,6 +36,7 @@
 						<span class="accuracy"><%: datum.Accuracy %> meters</span>
 					<% } %>
 				</div>
+				<div class="map"></div>
 			<% } %>
 		</div>
 	</article>

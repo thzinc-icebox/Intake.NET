@@ -28,17 +28,17 @@
 				<input type="text" id="tagName"/>
 				<ul id="tags"/>
 			</fieldset>
-			<fieldset>
+			<fieldset class="location">
 				<legend>Location</legend>
 				<a href="#" class="get location">
-					<img src="about:blank" alt="Include Location"/>
+					<img src="about:blank" alt="Toggle Location"/>
 				</a>
-				<em>Map</em>
 				<div class="coordinates">
 					<span class="latitude"></span>
 					<span class="longitude"></span>
-					<span class="accuracy"></span>
+					<span class="accuracy"></span> meters
 				</div>
+				<div class="map"></div>
 			</fieldset>
 			<input type="submit" value="Save"/>
 		</fieldset>

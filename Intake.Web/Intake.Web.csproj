@@ -55,6 +55,7 @@
     <Folder Include="View\Pages\" />
     <Folder Include="View\Pages\User\" />
     <Folder Include="js\" />
+    <Folder Include="css\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="View\Data.cs" />
@@ -94,5 +95,6 @@
     <Content Include="View\Pages\Datum\NotFound.aspx" />
     <Content Include="View\Pages\Datum\Show.aspx" />
     <Content Include="js\intake.js" />
+    <Content Include="css\screen.css" />
   </ItemGroup>
 </Project>

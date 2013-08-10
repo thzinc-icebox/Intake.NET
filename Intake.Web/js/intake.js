@@ -1,5 +1,88 @@
+
 (function($) {
 	$(function() {
+		// Support for geolocation
+		if (navigator && navigator.geolocation)
+		{
+			$(".location")
+				.on("updatemap.intake", function(e) {
+					var location = $(e.currentTarget);
+					var latitude = location.data("latitude");
+					var longitude = location.data("longitude");
+					var accuracy = location.data("accuracy");
+					
+					if (!!latitude && !!longitude) {
+						var mapOptions = {
+							zoom: 15,
+							mapTypeId: google.maps.MapTypeId.ROADMAP,
+							center: new google.maps.LatLng(latitude, longitude)
+						};
+						var map = new google.maps.Map(location.find(".map").get(0), mapOptions);
+					}
+				})
+				.trigger("updatemap")
+				.on("click.intake", "a.get.location", function(e) {
+					var button = $(e.currentTarget);
+					var fieldset = $(e.delegateTarget);
+					
+					var latitude = fieldset.find(".latitude");
+					var longitude = fieldset.find(".longitude");
+					var accuracy = fieldset.find(".accuracy");
+					
+					var hasLocation = fieldset.hasClass("hasLocation");
+				
+					if (!hasLocation) {
+						var success = function(position) {
+							var latInput = $('<input type="hidden" name="latitude"/>').val(position.coords.latitude);
+							var lonInput = $('<input type="hidden" name="longitude"/>').val(position.coords.longitude);
+							var accInput = $('<input type="hidden" name="accuracy"/>').val(position.coords.accuracy);
+							
+							latitude
+								.empty()
+								.text(latInput.val())
+								.append(latInput);
+								
+							longitude
+								.empty()
+								.text(lonInput.val())
+								.append(lonInput);
+								
+							accuracy
+								.empty()
+								.text(accInput.val())
+								.append(accInput);
+								
+							fieldset
+								.addClass("hasLocation")
+								.data("latitude", latInput.val())
+								.data("longitude", lonInput.val())
+								.data("accuracy", accInput.val())
+								.trigger("updatemap");
+						};
+						
+						var error = function() {
+							alert("There was an error getting your current location.");
+						};
+						
+						navigator.geolocation.getCurrentPosition(success, error, { enableHighAccuracy: true });
+					}
+					else {
+						fieldset
+							.removeClass("hasLocation")
+							.removeData("latitude")
+							.removeData("longitude")
+							.removeData("accuracy");
+						latitude.empty();
+						longitude.empty();
+						accuracy.empty();
+					}
+				});
+		}
+		else {
+			// No support for in-browser geolocation, so disable the fieldset
+			$("fieldset.location").addClass("disabled");
+		}
+		
 		// Find any datalist with a class of tags and transform it into something pretty
 		$("datalist.tags").each(function() {
 			var tagList = $(this);

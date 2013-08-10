@@ -81,7 +81,7 @@ namespace Intake.Core.Model
 		[DataRowPopulator.Column("Latitude")]
 		[Equatable]
 		[ParameterList.Parameter("@Latitude")]
-		public decimal? Latitude { get; set; }
+		public double? Latitude { get; set; }
 
 		/// <summary>
 		/// Longitude corresponding to the <see cref="Value"/>
@@ -89,7 +89,7 @@ namespace Intake.Core.Model
 		[DataRowPopulator.Column("Longitude")]
 		[Equatable]
 		[ParameterList.Parameter("@Longitude")]
-		public decimal? Longitude { get; set; }
+		public double? Longitude { get; set; }
 
 		/// <summary>
 		/// Accuracy (in meters) of the <see cref="Latitude"/> and <see cref="Longitude"/> coordinates
@@ -97,7 +97,7 @@ namespace Intake.Core.Model
 		[DataRowPopulator.Column("Accuracy")]
 		[Equatable]
 		[ParameterList.Parameter("@Accuracy")]
-		public decimal? Accuracy { get; set; }
+		public double? Accuracy { get; set; }
 		#endregion
 		#endregion
 		#region Public Methods

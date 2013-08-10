@@ -16,7 +16,6 @@
 				<article class="datum">
 					<article class="user">
 						<div class="primary">
-							<img src="about:blank" alt="Avatar" class="avatar"/>
 							<h2>
 								<a href="/users/<%: datum.User.Handle %>"><%: datum.User.Handle %></a>
 							</h2>

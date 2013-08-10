@@ -5,6 +5,8 @@
 		<title>Intake</title>
 		<script type="application/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 		<script type="application/javascript" src="/js/intake.js"></script>
+		<script type="application/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
+		<link rel="stylesheet" type="text/css" href="/css/screen.css"/>
 	</head>
 	<body>
 		<header>
@@ -12,28 +14,29 @@
 				<a href="/" class="logo">
 					Intake
 				</a>
-				
-				<% if (IsLoggedIn) { %>
-					<a href="/data/new" class="new data" accesskey="n">
-						New
-					</a>
+				<div class="tools">
+					<% if (IsLoggedIn) { %>
+						<a href="/data/new" class="new data" accesskey="n">
+							New
+						</a>
+						
+						<a href="/users/<%: CurrentHandle %>" class="user">
+							<%: CurrentDisplayName %>
+						</a>
 					
-					<a href="/users/<%: CurrentHandle %>" class="user">
-						<%: CurrentDisplayName %>
-					</a>
-				
-					<a href="/logout" class="logout">
-						Log out
-					</a>
-				<% } else { %>
-					<a href="/users/new" class="new user">
-						Sign up
-					</a>
-					
-					<a href="/login" class="login">
-						Log in
-					</a>
-				<% } %>
+						<a href="/logout" class="logout">
+							Log out
+						</a>
+					<% } else { %>
+						<a href="/users/new" class="new user">
+							Sign up
+						</a>
+						
+						<a href="/login" class="login">
+							Log in
+						</a>
+					<% } %>
+				</div>
 			</nav>
 		</header>
 		<div class="container">

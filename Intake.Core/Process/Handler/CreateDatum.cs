@@ -31,10 +31,10 @@ namespace Intake.Core.Process.Handler
 			var description = context.Request.Form["description"];
 			var tags = context.Request.Form.GetValues("tagName");
 
-			decimal dummy;
-			var latitude = decimal.TryParse(context.Request.Form["latitude"], out dummy) ? (decimal?)dummy : null;
-			var longitude = decimal.TryParse(context.Request.Form["longitude"], out dummy) ? (decimal?)dummy : null;
-			var accuracy = decimal.TryParse(context.Request.Form["accuracy"], out dummy) ? (decimal?)dummy : null;
+			double dummy;
+			var latitude = double.TryParse(context.Request.Form["latitude"], out dummy) ? (double?)dummy : null;
+			var longitude = double.TryParse(context.Request.Form["longitude"], out dummy) ? (double?)dummy : null;
+			var accuracy = double.TryParse(context.Request.Form["accuracy"], out dummy) ? (double?)dummy : null;
 
 			Model.Datum datum;
 			Model.User user;

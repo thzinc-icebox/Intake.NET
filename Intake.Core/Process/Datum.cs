@@ -23,7 +23,7 @@ namespace Intake.Core.Process
 		/// <param name="longitude">Longitude corresponding to the <paramref name="value"/></param>
 		/// <param name="accuracy">Accuracy (in meters) of the <paramref name="latitude"/> and <paramref name="longitude"/> coordinates</param>
 		/// <param name="datum">Instance of <see cref="Model.Datum"/></param>
-		public static ProcessResult<bool> CreateDatum(Model.User user, string value, string description, IEnumerable<string> tags, decimal? latitude, decimal? longitude, decimal? accuracy, out Model.Datum datum)
+		public static ProcessResult<bool> CreateDatum(Model.User user, string value, string description, IEnumerable<string> tags, double? latitude, double? longitude, double? accuracy, out Model.Datum datum)
 		{
 			datum = new Model.Datum() {
 				Accuracy = accuracy,
