@@ -4,6 +4,9 @@ using System.Web;
 
 namespace Intake.Web.View
 {
+	/// <summary>
+	/// Static path mappings
+	/// </summary>
 	public class Static : HandlerFactory
 	{
 		#region Request Handlers

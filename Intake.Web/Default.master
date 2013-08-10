@@ -14,7 +14,7 @@
 				</a>
 				
 				<% if (IsLoggedIn) { %>
-					<a href="/data/new" class="new data">
+					<a href="/data/new" class="new data" accesskey="n">
 						New
 					</a>
 					

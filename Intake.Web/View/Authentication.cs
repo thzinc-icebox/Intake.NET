@@ -5,21 +5,51 @@ using System.Configuration;
 
 namespace Intake.Web.View
 {
+	/// <summary>
+	/// Handler factory for authentication
+	/// </summary>
 	public class Authentication : HandlerFactory
 	{
 		#region Public Methods
+		/// <summary>
+		/// Encrypts the authentication cookie value
+		/// </summary>
+		/// <returns>The authentication cookie value</returns>
+		/// <param name="handle">Handle</param>
 		public static string EncryptAuthenticationCookieValue(string handle)
 		{
-			// HACK: This is egregious and must be changed
+			return string.Concat(Core.Process.User.GetPasswordDigest(handle, string.Empty), ":", handle);
+		}
+
+		/// <summary>
+		/// Decrypts the authentication cookie value into a <see cref="Core.Model.User.Handle"/>
+		/// </summary>
+		/// <returns>The authentication cookie value</returns>
+		/// <param name="ciphertext">Ciphertext</param>
+		public static string DecryptAuthenticationCookieValue(string ciphertext)
+		{
+			string handle = null;
+
+			var atoms = ciphertext.Split(new char[] { ':' }, 2);
+			if (atoms.Length == 2)
+			{
+				var reportedHandle = atoms[1];
+				var digest = EncryptAuthenticationCookieValue(reportedHandle);
+
+				if (ciphertext.Equals(digest))
+				{
+					handle = reportedHandle;
+				}
+			}
+
 			return handle;
 		}
 
-		public static string DecryptAuthenticationCookieValue(string ciphertext)
-		{
-			// HACK: This is egregious and must be changed
-			return ciphertext;
-		}
-
+		/// <summary>
+		/// Sets the authentication cookie
+		/// </summary>
+		/// <param name="user"><see cref="Core.Model.User"/> for whom to set the authentication cookie</param>
+		/// <param name="context">Context</param>
 		public static void SetAuthenticationCookie(Core.Model.User user, HttpContext context)
 		{
 			var name = ConfigurationManager.AppSettings["Authentication.Cookie.Name"];
@@ -33,6 +63,10 @@ namespace Intake.Web.View
 			context.Response.AppendCookie(cookie);
 		}
 
+		/// <summary>
+		/// Clears the authentication cookie
+		/// </summary>
+		/// <param name="context">Context</param>
 		public static void ClearAuthenticationCookie(HttpContext context)
 		{
 			var name = ConfigurationManager.AppSettings["Authentication.Cookie.Name"];
@@ -48,6 +82,10 @@ namespace Intake.Web.View
 		}
 		#endregion
 		#region Request Handlers
+		/// <summary>
+		/// Authenticate the POSTed user credentials
+		/// </summary>
+		/// <param name="context">Context</param>
 		[RequestMapping(new string[]{"POST"}, "/login")]
 		public IHttpHandler Authenticate(HttpContext context)
 		{
@@ -75,6 +113,10 @@ namespace Intake.Web.View
 			return handler;
 		}
 
+		/// <summary>
+		/// "Log out" the current user
+		/// </summary>
+		/// <param name="context">Context.</param>
 		[RequestMapping(new string[] {"GET"}, "/logout")]
 		public IHttpHandler Logout(HttpContext context)
 		{

@@ -8,9 +8,16 @@ using System.Linq;
 
 namespace Intake.Web.View
 {
+	/// <summary>
+	/// Handler factory for data requests
+	/// </summary>
 	public class Data : HandlerFactory
 	{
 		#region Request Handlers
+		/// <summary>
+		/// Creates a new <see cref="Core.Model.Datum"/> from the POSTed information
+		/// </summary>
+		/// <param name="context">Context</param>
 		[RequestMapping(new string[] {"POST"}, "/data/new")]
 		public IHttpHandler CreateDatum(HttpContext context)
 		{
@@ -41,6 +48,10 @@ namespace Intake.Web.View
 			return new Core.Process.Handler.CreateDatum(response);
 		}
 
+		/// <summary>
+		/// Gets a <see cref="Core.Model.Datum"/> by datumId
+		/// </summary>
+		/// <param name="context">Context</param>
 		[RequestMapping(new string[] {"GET"}, "/data/:(number)datumId")]
 		public IHttpHandler ShowDatum(HttpContext context)
 		{
@@ -65,6 +76,10 @@ namespace Intake.Web.View
 			return new Core.Process.Handler.Datum(response);
 		}
 
+		/// <summary>
+		/// Gets a list of <see cref="Core.Model.Datum"/>
+		/// </summary>
+		/// <param name="context">Context</param>
 		[RequestMapping(new string[] {"GET"}, "/data")]
 		[RequestMapping(new string[] {"GET"}, "/data/tag/:tag")]
 		public IHttpHandler GetRecentData(HttpContext context)
@@ -80,7 +95,6 @@ namespace Intake.Web.View
 
 			return handler;
 		}
-
 		#endregion
 	}
 }

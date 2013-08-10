@@ -7,9 +7,16 @@ using MPRV.Common;
 
 namespace Intake.Web.View
 {
+	/// <summary>
+	/// Handler factory for user requestss
+	/// </summary>
 	public class Users : HandlerFactory
 	{
 		#region Request Handlers
+		/// <summary>
+		/// Creates a new <see cref="Core.Model.User"/> from the POSTed information
+		/// </summary>
+		/// <param name="context">Context</param>
 		[RequestMapping(new string[] {"POST"}, "/users/new")]
 		public IHttpHandler CreateUser(HttpContext context)
 		{
@@ -53,6 +60,10 @@ namespace Intake.Web.View
 			return handler;
 		}
 
+		/// <summary>
+		/// Gets a <see cref="Core.Model.User"/> by handle
+		/// </summary>
+		/// <param name="context">Context</param>
 		[RequestMapping(new string[] {"GET"}, "/users/:handle")]
 		public IHttpHandler ShowUser(HttpContext context)
 		{
@@ -87,6 +98,10 @@ namespace Intake.Web.View
 			return new Core.Process.Handler.User(response);
 		}
 
+		/// <summary>
+		/// Gets a list of <see cref="Core.Model.Datum"/> filted by user
+		/// </summary>
+		/// <param name="context">Context</param>
 		[RequestMapping(new string[] {"GET"}, "/users/:handle/data")]
 		[RequestMapping(new string[] {"GET"}, "/users/:handle/data/tag/:tag")]
 		public IHttpHandler GetTaggedData(HttpContext context)
