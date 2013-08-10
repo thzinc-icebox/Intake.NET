@@ -1,16 +1,42 @@
 using System;
 using MPRV.Common;
+using MPRV.Model;
+using MPRV.Model.Data;
+using System.Linq;
 
 namespace Intake.Core.Model
 {
 	public class User : MPRV.Model.WritableModel<User>
 	{
-		#region Public Properties
-		public long UserId { get; protected set; }
+		#region Constructors
+		public User()
+			: base()
+		{
+			// initialize Locations and Data
+		}
 
+		#endregion
+		#region Public Properties
+
+		[DataRowPopulator.Column("UserId")]
+		[Equatable]
+		[ParameterList.Parameter("@UserId")]
+		public long? UserId { get; protected set; }
+
+		[DataRowPopulator.Column("Name")]
+		[Equatable]
+		[ParameterList.Parameter("@Name")]
 		public string Name { get; set; }
 
+		[DataRowPopulator.Column("Handle")]
+		[Equatable]
+		[ParameterList.Parameter("@Handle")]
 		public string Handle { get; set; }
+
+		[DataRowPopulator.Column("PasswordDigest")]
+		[Equatable]
+		[ParameterList.Parameter("@PasswordDigest")]
+		public string PasswordDigest { get; set; }
 
 		public IPagedEnumerable<Location> Locations { get; protected set; }
 		public IPagedEnumerable<Datum> Data {get;protected set;}
@@ -20,7 +46,9 @@ namespace Intake.Core.Model
 
 		public override bool Commit()
 		{
-			throw new NotImplementedException();
+			UserId = Model.Data.User.Current.Commit(this.BuildParameterList());
+
+			return UserId.HasValue;
 		}
 
 		#endregion

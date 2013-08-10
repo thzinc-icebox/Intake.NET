@@ -27,6 +27,9 @@ Single user:
 New user:
 /users/new
 
+New datum:
+/users/:handle/data/new
+
 Lists of users:
 /users
 

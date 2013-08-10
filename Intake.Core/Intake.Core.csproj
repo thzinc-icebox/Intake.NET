@@ -31,6 +31,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -40,6 +47,12 @@
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Factory\DatumFactory.cs" />
     <Compile Include="Process\Handler\Data.cs" />
+    <Compile Include="Model\Factory\UserFactory.cs" />
+    <Compile Include="Process\User.cs" />
+    <Compile Include="Model\Data\User.cs" />
+    <Compile Include="Process\Handler\CreateUser.cs" />
+    <Compile Include="Regulator\User.cs" />
+    <Compile Include="Process\Handler\User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -48,6 +61,7 @@
     <Folder Include="Model\Factory\" />
     <Folder Include="Process\" />
     <Folder Include="Process\Handler\" />
+    <Folder Include="Regulator\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MPRV.Portable\MPRV.Core\MPRV.Core.csproj">

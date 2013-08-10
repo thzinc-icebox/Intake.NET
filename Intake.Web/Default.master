@@ -1,14 +1,78 @@
 <%@ Master Language="C#" Inherits="Intake.Web.Default" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html>
-<head runat="server">
-	<title>default</title>
-</head>
-<body>
-<div id="container">
-<form runat="server">
-    <asp:ContentPlaceHolder id="contentPlaceHolder" runat="server" /> 
-</form>
-</div>
-</body>
+	<head runat="server">
+		<title>Intake</title>
+	</head>
+	<body>
+		<header>
+			<nav class="toolbar">
+				<a href="/" class="logo">
+					Intake
+				</a>
+				
+				<% if (IsLoggedIn) { %>
+					<a href="/data/new" class="new data">
+						New
+					</a>
+					
+					<a href="/users/<%: CurrentHandle %>" class="user">
+						<%: CurrentDisplayName %>
+					</a>
+				
+					<a href="/logout" class="logout">
+						Log out
+					</a>
+				<% } else { %>
+					<a href="/users/new" class="new user">
+						Sign up
+					</a>
+					
+					<a href="/login" class="login">
+						Log in
+					</a>
+				<% } %>
+			</nav>
+		</header>
+		<div class="container">
+			<article>
+				<header>
+					<asp:ContentPlaceHolder id="ArticleHeader" runat="server"/>
+				</header>
+				<asp:ContentPlaceHolder id="ArticleBody" runat="server"/>
+				<footer>
+					<asp:ContentPlaceHolder id="ArticleFooter" runat="server"/>
+				</footer>
+			</article>
+		</div>
+		<footer>
+			<article>
+				<header>
+					Open Source
+				</header>
+				<p>
+					Intake is open source under the ??? license.
+					<a href="https://github.com/thzinc/Intake.NET">Grab the code from GitHub!</a>
+				</p>
+			</article>
+			<article>
+				<header>
+					Designed for Data Junkies
+				</header>
+				<p>
+					Intake was born out of a desire to achieve the "Quantified Self."
+					<a href="/about">Read more</a>
+				</p>
+			</article>
+			<article>
+				<header>
+					By Daniel James
+				</header>
+				<p>
+					Daniel, a self-described data junkie, built this web app to track data.
+					<a href="http://blog.thzinc.com">Read more</a>
+				</p>
+			</article>
+		</footer>
+	</body>
 </html>

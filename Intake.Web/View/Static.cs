@@ -20,6 +20,18 @@ namespace Intake.Web.View
 			return new ServerTransferHandler("~/View/Pages/About.aspx");
 		}
 
+		[RequestMapping(new string[] {"GET"}, "/login")]
+		public IHttpHandler LoginForm(HttpContext context)
+		{
+			return new ServerTransferHandler("~/View/Pages/Login.aspx");
+		}
+
+		[RequestMapping(new string[] {"GET"}, "/users/new")]
+		public IHttpHandler SignUp(HttpContext context)
+		{
+			return new ServerTransferHandler("~/View/Pages/User/New.aspx");
+		}
+
 		#endregion
 	}
 }
