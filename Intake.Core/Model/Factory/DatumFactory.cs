@@ -6,10 +6,19 @@ using System.Linq;
 
 namespace Intake.Core.Model.Factory
 {
+	/// <summary>
+	/// Factory to build instances of <see cref="Model.Datum"/>
+	/// </summary>
 	public class DatumFactory : MPRV.Common.Factory<DatumFactory>
 	{
 		#region Public Methods
 
+		/// <summary>
+		/// Gets a paged enumerable of <see cref="Model.Datum"/> models
+		/// </summary>
+		/// <returns>Enumerable of <see cref="Model.Datum"/> models</returns>
+		/// <param name="userId">Optional user identifier to filter by</param>
+		/// <param name="tags">Optional enumerable of tags to filter by</param>
 		public IPagedEnumerable<Datum> GetData(long? userId = null, IEnumerable<string> tags = null)
 		{
 			var data = new PagedReadableModelEnumerable<Datum>(
@@ -24,6 +33,11 @@ namespace Intake.Core.Model.Factory
 			return data;
 		}
 
+		/// <summary>
+		/// Gets an instance of <see cref="Model.Datum"/>
+		/// </summary>
+		/// <returns>Instance of <see cref="Model.Datum"/></returns>
+		/// <param name="datumId">Datum identifier</param>
 		public Datum GetDatum(long datumId)
 		{
 			var row = Data.Datum.Current.Get(datumId);

@@ -4,24 +4,28 @@ using MPRV.Process;
 
 namespace Intake.Core.Process.Handler
 {
-	public class CreateDatum : IHttpHandler
+	/// <summary>
+	/// Handler to create a new <see cref="Model.Datum"/>
+	/// </summary>
+	public class CreateDatum : ProducerHandler<Tuple<ProcessResult<bool>, Model.Datum>>
 	{
 		#region Constructors
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Intake.Core.Process.Handler.CreateDatum"/> class
+		/// </summary>
+		/// <param name="response">Response to be called when the handler completes</param>
 		public CreateDatum(IHandlerResponse<Tuple<ProcessResult<bool>, Model.Datum>> response)
+			: base(response)
 		{
-			Response = response;
 		}
 		#endregion
-		#region Public Properties
-		public IHandlerResponse<Tuple<ProcessResult<bool>, Model.Datum>> Response { get; protected set; }
-
-		public bool IsReusable
-		{
-			get{ return false;}
-		}
-		#endregion
-		#region Public Methods
-		public void ProcessRequest(HttpContext context)
+		#region Protected Methods
+		/// <summary>
+		/// Produces the result of this handler
+		/// </summary>
+		/// <returns>The result</returns>
+		/// <param name="context">Context</param>
+		protected override Tuple<ProcessResult<bool>, Model.Datum> GetResult(HttpContext context)
 		{
 			var value = context.Request.Form["value"];
 			var description = context.Request.Form["description"];
@@ -47,7 +51,7 @@ namespace Intake.Core.Process.Handler
 				result.Messages.Add("CURRENT_USER_NOT_FOUND");
 			}
 
-			Response.ProcessResponse(Tuple.Create(result, datum));
+			return Tuple.Create(result, datum);
 		}
 		#endregion
 	}

@@ -4,31 +4,35 @@ using MPRV.Process;
 
 namespace Intake.Core.Process.Handler
 {
-	public class User : IHttpHandler
+	/// <summary>
+	/// Handler to retrieve a <see cref="Model.User"/>
+	/// </summary>
+	public class User : ProducerHandler<Tuple<ProcessResult<bool>, Model.User>>
 	{
 		#region Constructors
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Intake.Core.Process.Handler.User"/> class
+		/// </summary>
+		/// <param name="response">Response</param>
 		public User(IHandlerResponse<Tuple<ProcessResult<bool>, Model.User>> response)
+			: base(response)
 		{
-			Response = response;
 		}
-		#endregion
-		#region Public Properties
-		public bool IsReusable
-		{
-			get{ return false;}
-		}
-
-		public IHandlerResponse<Tuple<ProcessResult<bool>, Model.User>> Response { get; protected set; }
 		#endregion
 		#region Public Methods
-		public void ProcessRequest(HttpContext context)
+		/// <summary>
+		/// Produces the result of this handler
+		/// </summary>
+		/// <returns>The result</returns>
+		/// <param name="context">Context</param>
+		protected override Tuple<ProcessResult<bool>, Model.User> GetResult(HttpContext context)
 		{
 			var handle = context.GetUrlParameter("handle");
 
 			Model.User user;
 			var result = Process.User.GetUser(handle, out user);
 
-			Response.ProcessResponse(Tuple.Create(result, user));
+			return Tuple.Create(result, user);
 		}
 		#endregion
 	}
