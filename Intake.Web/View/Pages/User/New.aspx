@@ -5,13 +5,13 @@
 <asp:Content ContentPlaceHolderID="ArticleBody" ID="ArticleBodyContent" runat="server">
 	<% if (Context.Items.Contains("CreateUser.Error")) { %>
 		<div class="error">
-			<%= Context.Items["CreateUser.Error"] %>
+			<%: Context.Items["CreateUser.Error"] %>
 		</div>
 	<% } %>
 	<form method="post" action="/users/new">
 		<fieldset>
-			<input type="text" name="handle" value="<%= Context.Items["Handle"] %>" placeholder="Handle"/>
-			<input type="text" name="name" value="<%= Context.Items["Name"] %>" placeholder="Display Name"/>
+			<input type="text" name="handle" value="<%: Context.Items["Handle"] %>" placeholder="Handle"/>
+			<input type="text" name="name" value="<%: Context.Items["Name"] %>" placeholder="Display Name"/>
 			<input type="password" name="password" placeholder="Password"/>
 			<input type="password" name="passwordConfirm" placeholder="Confirm Password"/>
 			<input type="submit" value="Sign up"/>

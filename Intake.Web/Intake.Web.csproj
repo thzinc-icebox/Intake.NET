@@ -54,6 +54,7 @@
     <Folder Include="View\" />
     <Folder Include="View\Pages\" />
     <Folder Include="View\Pages\User\" />
+    <Folder Include="js\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="View\Data.cs" />
@@ -64,9 +65,8 @@
     <Compile Include="View\Static.cs" />
     <Compile Include="View\Authentication.cs" />
     <Compile Include="View\AuthenticationModule.cs" />
-    <Compile Include="View\UserIdentity.cs" />
-    <Compile Include="Default.master.designer.cs">
-      <DependentUpon>Default.master</DependentUpon>
+    <Compile Include="View\Pages\User\Result.ascx.cs">
+      <DependentUpon>Result.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -82,12 +82,17 @@
   <ItemGroup>
     <Content Include="Default.master" />
     <Content Include="web.config" />
-    <Content Include="View\Pages\Datum\Data.aspx" />
     <Content Include="View\Pages\About.aspx" />
     <Content Include="View\Pages\Default.aspx" />
     <Content Include="View\Pages\Login.aspx" />
     <Content Include="View\Pages\User\New.aspx" />
     <Content Include="View\Pages\User\Show.aspx" />
     <Content Include="View\Pages\User\NotFound.aspx" />
+    <Content Include="View\Pages\Datum\New.aspx" />
+    <Content Include="View\Pages\User\Result.ascx" />
+    <Content Include="View\Pages\Datum\List.aspx" />
+    <Content Include="View\Pages\Datum\NotFound.aspx" />
+    <Content Include="View\Pages\Datum\Show.aspx" />
+    <Content Include="js\intake.js" />
   </ItemGroup>
 </Project>

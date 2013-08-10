@@ -1,14 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Intake.Core/Process/Datum.cs">
     <Files>
-      <File FileName="Intake.Web/Default.master.designer.cs" Line="1" Column="1" />
+      <File FileName="Intake.Core/Model/Datum.cs" Line="89" Column="4" />
+      <File FileName="Intake.Core/Model/Factory/DatumFactory.cs" Line="20" Column="43" />
+      <File FileName="../MPRV.Portable/MPRV.Core/Model/PagedReadableModelEnumerable.cs" Line="80" Column="23" />
+      <File FileName="Intake.Core/Model/User.cs" Line="10" Column="3" />
+      <File FileName="Intake.Core/Model/Data/Datum.cs" Line="152" Column="43" />
+      <File FileName="Intake.Core/Process/Datum.cs" Line="45" Column="4" />
+      <File FileName="Intake.Core/Process/Handler/Datum.cs" Line="1" Column="1" />
+      <File FileName="Intake.Core/Process/User.cs" Line="1" Column="1" />
+      <File FileName="../MPRV.Portable/MPRV.Core/Model/DataRowPopulator.cs" Line="135" Column="24" />
+      <File FileName="../MPRV.Portable/MPRV.Core/Model/IReadableModel.cs" Line="13" Column="45" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/djames/BTSync/Projects/git/Intake/Intake.Web/Default.master.cs" line="50" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../MPRV.Portable/MPRV.Core/View/HandlerFactory.cs" line="19" offsetX="583" offsetY="270" expression="methodInfo.Name" liveUpdate="False" />

@@ -3,6 +3,7 @@ using System.Web;
 using MPRV.View;
 using MPRV.Process;
 using System.Linq;
+using MPRV.Common;
 
 namespace Intake.Web.View
 {
@@ -63,7 +64,53 @@ namespace Intake.Web.View
 				if (result.Result)
 				{
 					context.Items.Add("User", user);
-					context.Server.Transfer("~/View/Pages/User/Show.aspx");
+
+					var dataResponse = new DelegateHandlerResponse<IPagedEnumerable<Core.Model.Datum>>(data => {
+						context.Items.Add("Data", data);
+						context.Server.Transfer("~/View/Pages/User/Show.aspx");
+					});
+
+					var handler = new Core.Process.Handler.Data(dataResponse) {
+						UserId = user.UserId
+					};
+
+					handler.ProcessRequest(context);
+
+				}
+				else
+				{
+					context.Response.StatusCode = 404;
+					context.Server.Transfer("~/View/Pages/User/NotFound.aspx");
+				}
+			});
+
+			return new Core.Process.Handler.User(response);
+		}
+
+		[RequestMapping(new string[] {"GET"}, "/users/:handle/data")]
+		[RequestMapping(new string[] {"GET"}, "/users/:handle/data/tag/:tag")]
+		public IHttpHandler GetTaggedData(HttpContext context)
+		{
+			var response = new DelegateHandlerResponse<Tuple<ProcessResult<bool>, Core.Model.User>>(t => 
+			{
+				var result = t.Item1;
+				var user = t.Item2;
+
+				if (result.Result)
+				{
+					context.Items.Add("User", user);
+
+					var dataResponse = new DelegateHandlerResponse<IPagedEnumerable<Core.Model.Datum>>(data => {
+						context.Items.Add("Data", data);
+						context.Server.Transfer("~/View/Pages/Datum/List.aspx");
+					});
+
+					var handler = new Core.Process.Handler.Data(dataResponse) {
+						UserId = user.UserId,
+						Tags = context.GetUrlParameter("tag").Split(new char[]{' ', '+'}, StringSplitOptions.RemoveEmptyEntries)
+					};
+
+					handler.ProcessRequest(context);
 				}
 				else
 				{

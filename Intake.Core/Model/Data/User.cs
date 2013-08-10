@@ -5,10 +5,16 @@ using System.Linq;
 
 namespace Intake.Core.Model.Data
 {
+	/// <summary>
+	/// Data accessor for <see cref="Model.User"/>
+	/// </summary>
 	public class User : MPRV.Common.Factory<User>
 	{
 		#region Queries
-		private const string GET_BASE = @"
+		/// <summary>
+		/// Query part to select records from "User"
+		/// </summary>
+		public const string GET_BASE = @"
 			SELECT
 				CAST(u.UserId AS bigint) AS UserId,
 				u.Handle,

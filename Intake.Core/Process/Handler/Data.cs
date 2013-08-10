@@ -20,16 +20,15 @@ namespace Intake.Core.Process.Handler
 			get{ return false; }
 		}
 
-		public ISearchableParameter SearchableParameter { get; set; }
-
-		public IEnumerable<ISortParameter> SortParameters { get; set; }
+		public long? UserId {get;set;}
+		public IEnumerable<string> Tags{get;set;}
 
 		public IHandlerResponse<IPagedEnumerable<Model.Datum>> Response { get; protected set; }
 		#endregion
 		#region Public Methods
 		public void ProcessRequest(HttpContext context)
 		{
-			IPagedEnumerable<Model.Datum> data = Model.Factory.DatumFactory.Current.GetData(SearchableParameter, SortParameters);
+			var data = Model.Factory.DatumFactory.Current.GetData(UserId, Tags);
 
 			Response.ProcessResponse(data);
 		}

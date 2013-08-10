@@ -1,39 +1,27 @@
 <%@ Page Language="C#" MasterPageFile="~/Default.master" %>
+<%@ Import Namespace="MPRV.Common" %>
+<%@ Register TagPrefix="user" TagName="Result" Src="~/View/Pages/User/Result.ascx" %>
+
 <asp:Content ContentPlaceHolderID="ArticleHeader" ID="ArticleHeaderContent" runat="server">
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ArticleBody" ID="ArticleBodyContent" runat="server">
-	<% Intake.Core.Model.User user = Context.Items["User"] as Intake.Core.Model.User; %>
-	<article class="user">
-		<div class="primary">
-			<img src="about:blank" alt="Avatar" class="avatar"/>
-			<h2>
-				<a href="/users/<%= user.Handle %>"><%= user.Handle %></a>
-			</h2>
-		</div>
-		<div class="secondary">
-			<h3>
-				<%= user.Name %>
-			</h3>
-		</div>
-	</article>
-	<%--
+	<user:Result runat="server"/>
 	<article class="data">
+		<%
+			var user = Context.Items["User"] as Intake.Core.Model.User;
+			var data = Context.Items["Data"] as IPagedEnumerable<Intake.Core.Model.Datum>;
+			data.PerPage = 5;
+		%>
 		<ul>
-			<% foreach (var datum in user.Data) { %>
+			<% foreach (var datum in data) { %>
 				<li>
-					<div class="value"><%= datum.Value %></div>
+					<div class="value"><%: datum.Value %></div>
 				</li>
 			<% } %>
 		</ul>
 		<nav>
-			<a href="/users/<%= user.Handle %>/data">View <%= user.Data.TotalItems - user.Data.Count %> more</a>
+			<a href="/users/<%: user.Handle %>/data">More</a>
 		</nav>
-	</article>
-	--%>
-	<article class="locations">
-		<ul>
-			<li>location...</li>
-		</ul>
 	</article>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ArticleFooter" ID="ArticleFooterContent" runat="server">

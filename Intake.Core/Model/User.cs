@@ -10,14 +10,11 @@ namespace Intake.Core.Model
 	{
 		#region Constructors
 		public User()
-			: base()
 		{
-			// initialize Locations and Data
-		}
 
+		}
 		#endregion
 		#region Public Properties
-
 		[DataRowPopulator.Column("UserId")]
 		[Equatable]
 		[ParameterList.Parameter("@UserId")]
@@ -37,20 +34,14 @@ namespace Intake.Core.Model
 		[Equatable]
 		[ParameterList.Parameter("@PasswordDigest")]
 		public string PasswordDigest { get; set; }
-
-		public IPagedEnumerable<Location> Locations { get; protected set; }
-		public IPagedEnumerable<Datum> Data {get;protected set;}
-	
 		#endregion
 		#region Public Methods
-
 		public override bool Commit()
 		{
 			UserId = Model.Data.User.Current.Commit(this.BuildParameterList());
 
 			return UserId.HasValue;
 		}
-
 		#endregion
 	}
 }

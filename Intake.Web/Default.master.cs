@@ -48,13 +48,10 @@ namespace Intake.Web
 		{
 			get
 			{
-				Core.Model.User user = null;
-				if (Context.User != null && Context.User.Identity is View.UserIdentity)
-				{
-					user = (Context.User.Identity as View.UserIdentity).User;
-				}
-
-				return user;
+				Core.Model.User currentUser = null;
+				Core.Process.User.GetCurrentUser(out currentUser);
+				
+				return currentUser;
 			}
 		}
 

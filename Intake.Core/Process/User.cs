@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using MPRV.Process;
 using System.Configuration;
+using System.Web;
 
 namespace Intake.Core.Process
 {
@@ -26,9 +27,8 @@ namespace Intake.Core.Process
 				user.Handle = handle;
 				user.Name = name;
 				user.PasswordDigest = GetPasswordDigest(handle, passwordPlaintext);
-				user.Commit();
 
-				result = new ProcessResult<bool>(true);
+				result = new ProcessResult<bool>(user.Commit());
 			}
 			else
 			{
@@ -48,6 +48,25 @@ namespace Intake.Core.Process
 			if (!result.Result)
 			{
 				result.Messages.Add("USER_HANDLE_NOT_FOUND");
+			}
+
+			return result;
+		}
+
+		public static ProcessResult<bool> GetCurrentUser(out Model.User user)
+		{
+			var context = HttpContext.Current;
+
+			ProcessResult<bool> result;
+			if (context.User != null && context.User.Identity is View.UserIdentity)
+			{
+				user = (context.User.Identity as View.UserIdentity).User;
+				result = new ProcessResult<bool>(true);
+			}
+			else{
+				user = null;
+				result = new ProcessResult<bool>(false);
+				result.Messages.Add("CURRENT_USER_NOT_AVAILABLE");
 			}
 
 			return result;

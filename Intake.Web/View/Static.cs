@@ -7,7 +7,6 @@ namespace Intake.Web.View
 	public class Static : HandlerFactory
 	{
 		#region Request Handlers
-
 		[RequestMapping(new string[] {"GET"}, "/")]
 		public IHttpHandler Index(HttpContext context)
 		{
@@ -26,12 +25,17 @@ namespace Intake.Web.View
 			return new ServerTransferHandler("~/View/Pages/Login.aspx");
 		}
 
+		[RequestMapping(new string[] {"GET"}, "/data/new")]
+		public IHttpHandler CreateNewDatum(HttpContext context)
+		{
+			return new ServerTransferHandler("~/View/Pages/Datum/New.aspx");
+		}
+
 		[RequestMapping(new string[] {"GET"}, "/users/new")]
 		public IHttpHandler SignUp(HttpContext context)
 		{
 			return new ServerTransferHandler("~/View/Pages/User/New.aspx");
 		}
-
 		#endregion
 	}
 }

@@ -3,6 +3,8 @@
 <html>
 	<head runat="server">
 		<title>Intake</title>
+		<script type="application/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+		<script type="application/javascript" src="/js/intake.js"></script>
 	</head>
 	<body>
 		<header>

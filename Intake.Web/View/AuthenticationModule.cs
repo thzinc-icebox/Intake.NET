@@ -32,7 +32,7 @@ namespace Intake.Web.View
 				Core.Model.User user;
 				if (Core.Process.User.GetUser(handle, out user).Result)
 				{
-					var identity = new UserIdentity(user);
+					var identity = new Core.View.UserIdentity(user);
 					var principal = new GenericPrincipal(identity, new string[] { });
 
 					context.User = principal;
