@@ -4,6 +4,6 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ArticleBody" runat="server">
 	<p>
-		Intake is a web app for data junkies.
+		Intake is a web app for data junkies and those interested in the <a href="http://en.wikipedia.org/wiki/Quantified_Self">Quantified Self</a>.
 	</p>
 </asp:Content>

@@ -42,6 +42,10 @@ header nav .tools
 	text-align: center;
 }
 
+.container 
+{
+	background-color: #FFF;
+}
 .container article p
 {
 	font-size: 0.9em;
