@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intake.Core", "Intake.Core\Intake.Core.csproj", "{BF98DBB7-A3B6-4890-A46B-E3396CEB049C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPRV.Core", "..\MPRV.Portable\MPRV.Core\MPRV.Core.csproj", "{058A4FD8-63F6-4425-A02F-0CB9E6C3634D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intake.Web", "Intake.Web\Intake.Web.csproj", "{F13CC745-B122-4943-8016-633A64D7AA39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPRV.Core", "..\MPRV\MPRV.Core\MPRV.Core.csproj", "{058A4FD8-63F6-4425-A02F-0CB9E6C3634D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

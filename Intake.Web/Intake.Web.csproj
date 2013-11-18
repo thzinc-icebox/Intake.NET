@@ -71,13 +71,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MPRV.Portable\MPRV.Core\MPRV.Core.csproj">
-      <Project>{058A4FD8-63F6-4425-A02F-0CB9E6C3634D}</Project>
-      <Name>MPRV.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Intake.Core\Intake.Core.csproj">
       <Project>{BF98DBB7-A3B6-4890-A46B-E3396CEB049C}</Project>
       <Name>Intake.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MPRV\MPRV.Core\MPRV.Core.csproj">
+      <Project>{058A4FD8-63F6-4425-A02F-0CB9E6C3634D}</Project>
+      <Name>MPRV.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

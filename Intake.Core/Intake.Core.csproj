@@ -68,7 +68,7 @@
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MPRV.Portable\MPRV.Core\MPRV.Core.csproj">
+    <ProjectReference Include="..\..\MPRV\MPRV.Core\MPRV.Core.csproj">
       <Project>{058A4FD8-63F6-4425-A02F-0CB9E6C3634D}</Project>
       <Name>MPRV.Core</Name>
     </ProjectReference>
