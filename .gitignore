@@ -1,1 +1,6 @@
 *.DS_Store
+packages
+*.suo
+bin
+obj
+*.db
